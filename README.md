@@ -33,10 +33,14 @@ Additional tech details:
   -  CNN trained on images of 1's from MNIST and images of those same 1's with the colors inverted.  The idea here is that the two classes are literal opposites of one another.  In evolving an image of a 1, any pixels that are not explicitly correct will be actively be working towards the classification of the other class.  As such, a high fitness/softmax score in the configuration should be a strong indicator that a proper 1 has been drawn.
   -  Same idea as the previous bullet, but all the images of 1's (and its inversion) are of the same drawing of a 1.  The core logic here is the same as in the previous bullet, only now the dataset is even simpler.  I was hoping that this simplicity would increase the likelihood of success.
 
-* In testing some of the aforementioned CNNs, I added in code that colored every pixel ajacent to a designated white pixel white.  I hypothesized that this would do two things:  
+* In testing some of the aforementioned CNNs, I added in code that colored every pixel adjacent to a designated white pixel white.  I hypothesized that this would do two things:  
 
-  1)  It would reward proper pixel placement and punish incorrect pixel placement to a greater degree, as each white pixel now affects all ajacent pixels.
+  1)  It would reward proper pixel placement and punish incorrect pixel placement to a greater degree, as each white pixel now affects all adjacent pixels.
   2)  It would cause the Genetic Algorithm to converge faster, as larger amounts of change could happen in the images during each generation. 
+
+* The TensorFlow files for the using the aforementioned CNNs, as well as a text file briefly discussing each, are in the `tensorflowGraphs` folder.
+
+* The `retrained_graph.pb` and `retrained_labels.txt` files in the main directory are from folder `7` in the `tensorflowGraphs` folder.  These files represent a CNN that was trained using a single image of a 1 from the MNIST dataset, and its inverse, as classes.
 
 ## Results
 
@@ -44,10 +48,7 @@ There were two ways that this experiment could have gone:  Either the Genetic Al
 
 Unfortunately, the images rendered were nonsense-looking.  In all CNN configurations, the same result was realized: None of the Genetic Algorithm trials yielded any images resembling an image of a 1.  In hindsight, the reason for this is obvious.  Classifiers work by learning distinguishing features between the classes.  Unfortunately, these features are not the same thing as the image of the thing itself.  For example, if your two classes were images of 0's and images of 1's, a classifier might learn that any curved line means 0, and then classify nonsense images with a curved line as a 0.  In our case, we essentially evolved images that contain these distinguishing features.  Because these features are abstracted, the results were unfortunately not human-recognizable.
 
-
-
-
-
+If you are interested in seeing images of the results, check the `images` folder, or watch the video where I discuss the project [here](https://www.youtube.com/watch?v=3h3L5joNXyY).
 
 
 
