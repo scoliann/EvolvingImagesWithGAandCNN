@@ -1,10 +1,10 @@
-This script is used test whether human-recognizable images can evolved using a Genetic Algorithm that leverages the softmax scores from a CNN as a fitness function.
+This script is used test whether human-recognizable images can be evolved using a Genetic Algorithm that leverages the softmax scores from a CNN as a fitness function.
 
 #  Important Note
 
 The goal was to determine if a Genetic Algorithm could be used in conjunction with a CNN to evolve human-recognizable images.  It turns out that this is NOT possible.  None the less, I chose to upload this project to GitHub, as I thought it was a novel, interesting idea that people might enjoy hearing about.
 
-A video of me describing this project and the outcomes can be found [here](https://www.youtube.com/watch?v=3h3L5joNXyY).
+A video describing this project and the outcomes can be found [here](https://www.youtube.com/watch?v=3h3L5joNXyY).
 
 ## The Idea
 
@@ -16,15 +16,15 @@ Why does this matter?  This will allow us to generate images of things that don'
 
 The tech that I used in this project is as follows:
 
--  All CNNs were created by retraining TensorFlow's the Inception model.
--  The DEAP framework was used to create and run my Genetic Algorithm.
--  During this project, the CNNs were trained to try and classify images of 1's from the MNIST dataset.
+*  All CNNs were created by retraining TensorFlow's the Inception model.
+*  The DEAP framework was used to create and run my Genetic Algorithm.
+*  During this project, the CNNs were trained to try and classify images of 1's from the MNIST dataset.
 
 Additional tech details:
 
--  All images used in this experiment were converted from grayscale to simple black and white.
--  The softmax values returned from the CNN were used as the fitness scores for the Genetic Algorithm.  Softmax values can be interpreted as probabilities.  Therefore, an image that is classified as a dog with a score of 0.99 has an extremely strong resemblance to a dog according to the CNN.
--  Though I am trying to evolve images of 1's, classifiers must be trained to differentiate between multiple classes.  Therefore, what were the other classes on which my CNN was trained?  I tried a variety of CNNs that had all been trained under different circumstances.  Some of these attempts and the logic behind them are as follows:
+* All images used in this experiment were converted from grayscale to simple black and white.
+* The softmax values returned from the CNN were used as the fitness scores for the Genetic Algorithm.  Softmax values can be interpreted as probabilities.  Therefore, an image that is classified as a dog with a score of 0.99 has an extremely strong resemblance to a dog according to the CNN.
+* Though I am trying to evolve images of 1's, classifiers must be trained to differentiate between multiple classes.  Therefore, what were the other classes on which my CNN was trained?  I tried a variety of CNNs that had all been trained under different circumstances.  Some of these attempts and the logic behind them are as follows:
 
   -  CNN trained on the MNIST dataset and could classify images as belonging in classes 0 through 9.
   -  CNN trained on images of 1's from MNIST and images of noise with 50% black and 50% white pixel composition.  The idea here was that we would want to evolve images to look less like random noise and more like an image of a 1.
