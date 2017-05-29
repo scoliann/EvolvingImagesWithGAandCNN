@@ -29,9 +29,14 @@ Additional tech details:
   -  CNN trained on the MNIST dataset and could classify images as belonging in classes 0 through 9.
   -  CNN trained on images of 1's from MNIST and images of noise with 50% black and 50% white pixel composition.  The idea here was that we would want to evolve images to look less like random noise and more like an image of a 1.
   -  CNN trained on images of 1's from MNIST and images of noise with 95% black and 5% white pixel composition.  The idea here is that the ratio for pixel composition is closer to that in the images of the 1's.
-  -  CNN trained on images of 1's from MNIST and images of pure black.  The idea here is that this is the simplest possible alternate class, and hopefully it will be easy to evolve away from a plane black background.
+  -  CNN trained on images of 1's from MNIST and images of pure black.  The idea here is that a pure black image is the simplest possible alternate class.  Hopefully it will be easy to evolve away from a plane black background.
   -  CNN trained on images of 1's from MNIST and images of those same 1's with the colors inverted.  The idea here is that the two classes are literal opposites of one another.  In evolving an image of a 1, any pixels that are not explicitly correct will be actively be working towards the classification of the other class.  As such, a high fitness/softmax score in the configuration should be a strong indicator that a proper 1 has been drawn.
-  -  Same idea as the previous bullet, but all the images of 1's (and its inversion) are of the same drawing of a 1.  The core logic here is the same as in the previous bullet, only now the dataset is even simpler.  I was hoping that this simplicity would increase the likelihood of success.  
+  -  Same idea as the previous bullet, but all the images of 1's (and its inversion) are of the same drawing of a 1.  The core logic here is the same as in the previous bullet, only now the dataset is even simpler.  I was hoping that this simplicity would increase the likelihood of success.
+
+* In testing some of the aforementioned CNNs, I added in code that colored every pixel ajacent to a designated white pixel white.  I hypothesized that this would do two things:  
+
+  1)  It would reward proper pixel placement and punish incorrect pixel placement to a greater degree, as each white pixel now affects all ajacent pixels.
+  2)  It would cause the Genetic Algorithm to converge faster, as larger amounts of change could happen in the images during each generation. 
 
 ## Results
 
